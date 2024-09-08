@@ -34,11 +34,7 @@ jobs:
           TEMPLATE_PATH: ./template.json
           OUTPUT_PATH: ./README.md
           BRANCH_NAME: doc-update
+          REPOSITORY_NAME: generate_readme_test
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/YumaMatsumura/generate_readme_test.git
-
           python generate_readme/generate_readme.py
 
