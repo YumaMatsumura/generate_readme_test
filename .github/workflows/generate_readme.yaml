@@ -28,9 +28,9 @@ jobs:
           LANGUAGE: ja
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4o-2024-08-06
-          TEMPLATE_PATH: template.json
-          OUTPUT_PATH: README.md
+          TEMPLATE_PATH: ./template.json
+          OUTPUT_PATH: ./README.md
           BRANCH_NAME: doc-update
         run: |
-          cd generate_readme && python generate_readme.py
+          python generate_readme/generate_readme.py
 
