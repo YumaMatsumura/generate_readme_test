@@ -17,6 +17,6 @@
       }
     }
   },
-  "required": ["title", "overview", "input_topics"],
+  "required": ["title", "overview", "output_topics"],
   "additionalProperties": false
 }
