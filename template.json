@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "title": {"type": "string", "description": "title"},
+    "overview": {"type": "string", "description": "code overview"},
+    "input_topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "description": "Topic name entered in the node"},
+          "type": {"type": "string", "description": "Type of topic entered into the node"},
+          "description": {"type": "string", "description": "Description of the topic entered in the node"}
+        },
+        "required": ["name", "type", "description"],
+        "additionalProperties": false
+      }
+    },
+    "output_topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "description": "Topic name output from the node"},
+          "type": {"type": "string", "description": "Type of topic output from the node"},
+          "description": {"type": "string", "description": "Description of the topic output from the node"}
+        },
+        "required": ["name", "type", "description"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["title", "overview", "input_topics", "output_topics"],
+  "additionalProperties": false
+}
