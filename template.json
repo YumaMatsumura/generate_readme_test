@@ -30,6 +30,6 @@
       }
     }
   },
-  "required": ["title", "overview", "input_topics", "output_topics"],
+  "required": ["title", "overview"],
   "additionalProperties": false
 }
