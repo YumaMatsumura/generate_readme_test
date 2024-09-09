@@ -29,12 +29,13 @@ jobs:
         env:
           LANGUAGE: ja
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${GITHUB_ACTOR}
+          GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4o-2024-08-06
           TEMPLATE_PATH: ./template.json
           OUTPUT_PATH: ./README.md
           BRANCH_NAME: doc-update
-          REPOSITORY_NAME: generate_readme_test
         run: |
           python generate_readme/generate_readme.py
 
