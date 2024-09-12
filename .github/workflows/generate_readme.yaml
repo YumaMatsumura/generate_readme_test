@@ -19,15 +19,25 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install dependencies
-        run: pip install openai
+      - name: Install poetry
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+          echo "$HOME/.poetry/bin" >> $GITHUB_PATH
 
-      - name: Clone package
-        run: git clone https://github.com/YumaMatsumura/generate_readme.git
+      - name: Install dependencies with Poetry
+        run: |
+          poetry install
+          poetry run pip install ../generate_readme
+
+      - name: Clone generate_readme repository
+        run: |
+          git clone https://github.com/YumaMatsumura/generate_readme.git
+          cd generate_readme
+          poetry install
 
       - name: Generate and commit documentation
         env:
-          LANGUAGE: ja
+          LANGUAGE: Japanese
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -36,5 +46,6 @@ jobs:
           OUTPUT_PATH: ./README.md
           BRANCH_NAME: doc-update
         run: |
-          python generate_readme/generate_readme.py
+          cd generate_readme
+          poetry run generate_readme
 
