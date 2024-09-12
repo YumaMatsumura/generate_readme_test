@@ -41,5 +41,6 @@ jobs:
           OUTPUT_PATH: ./README.md
           BRANCH_NAME: doc-update
         run: |
+          cd generate_readme
           poetry run python generate_readme/generate_readme.py
 
